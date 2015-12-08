@@ -1,11 +1,11 @@
 
-public class PUPIL
+public class pupil
 {
     private String firstName;
     private String surname;
     private int examMark; 
 
-    public PUPIL()
+    public pupil()
     {
         //constructor
         firstName = "";

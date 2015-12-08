@@ -2,33 +2,44 @@ import javax.swing.*;
 import java.io.*;     
 public class TOPPUPIL
 {
+    // array of MEMBER objects
+    private pupil pupilList[];
+    // number of members to be calculated after reading file
+    int noOfPupils;
+    FILEREADCSV examDataFile;
 
-    private PUPIL pupillist[];
-
-    int noOfPUPILS;
-    int topMark
-    //classes to open, read/write, close files
-    FILEREADCSV examData file;
-
-    int maxDataPosition ;
-
-    string fileContent = "" ;
-
-    FILEWRITERCSV resultsFile;
-    public TOPPUPIL() throws IOException
+    public void TOPUPIL()
     {
-        //create file handler objects
         examDataFile = new FILEREADCSV();
-        resultsFile = new FILEWRITECSV();
-        topMark = 0 ;
-        noOfPUPILS = 49 ;
-
     }
 
     // top level algorithm
-    public void processPupils() throws IOException
+    public void processPUPIL() throws IOException
+
     {
-        
+        setUpPupilList();
+        findExamMark();
+    }
+
+    public void setUpPupilList() throws IOException
+
+    {
+        System.out.println("exam data here: list of pupils");
+        System.out.println("** Preparing to read data file.");
+        // read file, fetch data as String array containing the rows
+        String[] dataRows = examDataFile.readCSVtable();
+        // calculate the number of member rows, skip headings
+        noOfPupils = dataRows.length - 1;
+
+
+        // update user with number of rows with membership details
+        System.out.println("** " + noOfPupils + " rows read.\n\n");
+    }
+
+    public void findExamMark()
+    {
+        // placeholder
     }
 
 }
+
