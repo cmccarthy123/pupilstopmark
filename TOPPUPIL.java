@@ -1,33 +1,34 @@
-
-/**
- * Write a description of class TOPPUPIL here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import javax.swing.*;
+import java.io.*;     
 public class TOPPUPIL
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class TOPPUPIL
-     */
-    public TOPPUPIL()
+    private PUPIL pupillist[];
+
+    int noOfPUPILS;
+    int topMark
+    //classes to open, read/write, close files
+    FILEREADCSV examData file;
+
+    int maxDataPosition ;
+
+    string fileContent = "" ;
+
+    FILEWRITERCSV resultsFile;
+    public TOPPUPIL() throws IOException
     {
-        // initialise instance variables
-        x = 0;
+        //create file handler objects
+        examDataFile = new FILEREADCSV();
+        resultsFile = new FILEWRITECSV();
+        topMark = 0 ;
+        noOfPUPILS = 49 ;
+
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    // top level algorithm
+    public void processPupils() throws IOException
     {
-        // put your code here
-        return x + y;
+        
     }
+
 }
