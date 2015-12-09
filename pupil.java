@@ -1,29 +1,26 @@
+import javax.swing.JOptionPane;    
 
-public class pupil
+public class PUPIL 
 {
-    private String firstName;
-    private String surname;
-    private int examMark; 
-
-    public pupil()
+    private String fName ;
+    private String sName ; 
+    private int mark ; 
+    public PUPIL () 
     {
-        //constructor
-        firstName = "";
-        surname = "";
-        examMark = 0;
-
+        fName = "" ; 
+        sName = "" ;
+        mark = 0 ; 
     }
 
     public void readPupilDetails(String dataItems)
     {
-
-        // unpack string of row data into fields
-        String[] rowItems = dataItems.split(",");
+        //unpack string of row data into fields
+        String[] rowItems = dataItems.split(",") ;
 
         // store each data item as instance property
-        firstName = rowItems[0];
-        surname = rowItems[1];
-        examMark = (Integer.parseInt(rowItems[2]));
+        fName = rowItems[0] ;
+        sName = rowItems[1] ; 
+        mark = Integer.parseInt(rowItems[2]) ;
 
     }
 
@@ -31,12 +28,28 @@ public class pupil
     {
         // join up data into a string to output as a row
         // use "," to separate csv columns
-        String pupilData = "";
-        pupilData = pupilData.concat(firstName);
-        pupilData = pupilData.concat(",");
-        pupilData = pupilData.concat(surname);
-        pupilData = pupilData.concat(",");
-        pupilData = pupilData.concat(Integer.toString(examMark));
-        return pupilData;
+        String memberData = "";
+        memberData = memberData.concat(fName);
+        memberData = memberData.concat(",");
+        memberData = memberData.concat(sName); 
+        memberData = memberData.concat(",");
+        memberData = memberData.concat(Integer.toString(mark));
+        return memberData;
     }
+
+    public int getMark ()
+    {
+        return mark ;
+    }
+    
+    public String getfName ()
+    {
+       return fName ;
+    }
+    
+    public String getsName ()
+    {
+       return sName ;
+    }
+    
 }

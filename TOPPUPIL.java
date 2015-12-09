@@ -3,43 +3,84 @@ import java.io.*;
 public class TOPPUPIL
 {
     // array of MEMBER objects
-    private pupil pupilList[];
+    private PUPIL pupilList[];
     // number of members to be calculated after reading file
-    int noOfPupils;
-    FILEREADCSV examDataFile;
+    int noOfPUPILS;
+    int topMark ;
 
+    FILEREADCSV examDataFile;
+    
+    int maxDataPosition ;
+
+    String fileContent = "" ;
+
+    FILEWRITECSV resultsFile ;
     public void TOPUPIL()
     {
-        examDataFile = new FILEREADCSV();
+        examDataFile = new FILEREADCSV() ;
+        resultsFile = new FILEWRITECSV() ;
+        topMark = 0 ;
+        noOfPUPILS = 49 ;
     }
 
     // top level algorithm
     public void processPUPIL() throws IOException
 
     {
-        setUpPupilList();
-        findExamMark();
+        setUppupilList();
+        counttopMark();
     }
 
-    public void setUpPupilList() throws IOException
-
+    private void setUppupilList () throws IOException 
     {
-        System.out.println("exam data here: list of pupils");
-        System.out.println("** Preparing to read data file.");
-        // read file, fetch data as String array containing the rows
-        String[] dataRows = examDataFile.readCSVtable();
-        // calculate the number of member rows, skip headings
-        noOfPupils = dataRows.length - 1;
+        //first user message
+        System.out.println("Feeback of marks" ) ;
+        System.out.println("** Preparing to read data file.") ;
 
+        // read file, fetch data as String array containing the rows
+        String[] datarows = examDataFile.readCSVtable () ;
+
+        //calculate the number of member rows, skip headings
+        noOfPUPILS = datarows.length - 1 ;
 
         // update user with number of rows with membership details
-        System.out.println("** " + noOfPupils + " rows read.\n\n");
+        System.out.println ("** " + noOfPUPILS +  " rows read ." ) ;
+
+        // prepare array for pupils 
+        pupilList = new PUPIL[noOfPUPILS] ;
+
+        //create pupil objects and copy data from source
+        for (int i = 0 ; i < noOfPUPILS ; i++) {
+            pupilList[i] = new PUPIL () ;
+
+            //adjust to skip headings 
+            pupilList[i].readPupilDetails(datarows[ i +1]);
+        }
+
     }
 
-    public void findExamMark()
+    public void counttopMark() throws IOException
     {
-        // placeholder
+        String fileContent = "" ;
+        System.out.println("pupil with the top mark\n") ;
+        int maxDataposition = 0 ;
+
+        for (int i= 0; i< noOfPUPILS; i++) {
+
+            if (pupilList[i].getMark() > topMark) {
+                topMark = pupilList[i].getMark() ;
+                maxDataposition = i;
+                fileContent = fileContent.concat(pupilList[i].writeDetails()) ;
+
+            } 
+        }
+        System.out.println( "\n top mark is : " + topMark) ;
+        System.out.println( "which belongs to: " + pupilList[maxDataPosition].getfName() + " " + pupilList[maxDataPosition].getsName() ) ;
+        System.out.println () ;
+        System.out.println("** preparing to write data file") ;
+        resultsFile.writeCSVtable(fileContent)  ;
+        System.out.println("** File written and closed.") ;
     }
-
+    
+    
 }
-
