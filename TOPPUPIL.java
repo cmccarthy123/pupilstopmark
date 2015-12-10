@@ -1,34 +1,34 @@
-import javax.swing.*;
-import java.io.*;     
-public class TOPPUPIL
+import javax.swing.JOptionPane;    
+import java.io.* ;
+
+public class TOPPUPIL 
 {
-    // array of MEMBER objects
-    private PUPIL pupilList[];
-    // number of members to be calculated after reading file
-    int noOfPUPILS;
-    int topMark ;
+    // array of PUPIL objects 
+    private PUPIL pupilList [] ;
+    //number of members to be calculated after reading file
+    int noOfPUPILS ; 
+    int topMark ; 
 
-    FILEREADCSV examDataFile;
+    FILEREADCSV examDataFile ;
+
+    int maxDataPosition ; 
+
+    String fileContent = "" ; 
     
-    int maxDataPosition ;
-
-    String fileContent = "" ;
-
     FILEWRITECSV resultsFile ;
-    public void TOPUPIL()
-    {
-        examDataFile = new FILEREADCSV() ;
-        resultsFile = new FILEWRITECSV() ;
+    public TOPPUPIL() throws IOException
+    {  
+        examDataFile = new FILEREADCSV () ; 
+        resultsFile = new FILEWRITECSV() ; 
         topMark = 0 ;
-        noOfPUPILS = 49 ;
+        noOfPUPILS = 49;
     }
 
-    // top level algorithm
-    public void processPUPIL() throws IOException
-
+    //top level algorithm 
+    public void processPUPILS () throws IOException
     {
-        setUppupilList();
-        counttopMark();
+        setUppupilList () ; 
+        counttopMark () ; 
     }
 
     private void setUppupilList () throws IOException 
@@ -59,28 +59,30 @@ public class TOPPUPIL
 
     }
 
-    public void counttopMark() throws IOException
+    public void counttopMark () throws IOException
     {
         String fileContent = "" ;
-        System.out.println("pupil with the top mark\n") ;
-        int maxDataposition = 0 ;
-
+        System.out.println( "A report of the pupil with the top mark\n") ;
+        int maxDataPosition = 0 ;
+        
         for (int i= 0; i< noOfPUPILS; i++) {
 
+            //compare current value with best value
             if (pupilList[i].getMark() > topMark) {
+                // update the position of the best value
                 topMark = pupilList[i].getMark() ;
-                maxDataposition = i;
-                fileContent = fileContent.concat(pupilList[i].writeDetails()) ;
+                maxDataPosition = i;
+                fileContent = fileContent.concat(pupilList[i].writeDetails()) ; 
 
-            } 
+            }
         }
-        System.out.println( "\n top mark is : " + topMark) ;
+        System.out.println( "\n Top mark is: " + topMark) ;
         System.out.println( "which belongs to: " + pupilList[maxDataPosition].getfName() + " " + pupilList[maxDataPosition].getsName() ) ;
-        System.out.println () ;
-        System.out.println("** preparing to write data file") ;
-        resultsFile.writeCSVtable(fileContent)  ;
-        System.out.println("** File written and closed.") ;
+        System.out.println () ;     
+        System.out.println( "** Preparing to write data file") ; 
+        resultsFile.writeCSVtable(fileContent) ;
+        System.out.println( "** File written and closed.") ; 
     }
-    
-    
+
+   
 }

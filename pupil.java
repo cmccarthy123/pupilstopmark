@@ -31,7 +31,7 @@ public class PUPIL
         String memberData = "";
         memberData = memberData.concat(fName);
         memberData = memberData.concat(",");
-        memberData = memberData.concat(sName); 
+        memberData = memberData.concat(sName);
         memberData = memberData.concat(",");
         memberData = memberData.concat(Integer.toString(mark));
         return memberData;
@@ -41,15 +41,24 @@ public class PUPIL
     {
         return mark ;
     }
-    
+
     public String getfName ()
     {
-       return fName ;
+        return fName ;
     }
     
-    public String getsName ()
+    public String getsName () 
     {
-       return sName ;
+        return sName ;
     }
-    
+   
+    public void displayDetails () 
+    {
+
+        System.out.print("Pupil: " + fName + " " + sName);
+        System.out.print(",  Mark is ");
+        System.out.print (mark);
+        System.out.println();
+    }
+
 }
