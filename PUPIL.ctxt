@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=PUPIL()
+comment0.target=pupil()
 comment1.params=dataItems
 comment1.target=void\ readPupilDetails(java.lang.String)
 comment2.params=

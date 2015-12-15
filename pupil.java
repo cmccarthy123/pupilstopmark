@@ -1,11 +1,11 @@
 import javax.swing.JOptionPane;    
 
-public class PUPIL 
+public class pupil 
 {
     private String fName ;
     private String sName ; 
     private int mark ; 
-    public PUPIL () 
+    public pupil () 
     {
         fName = "" ; 
         sName = "" ;
