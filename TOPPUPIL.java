@@ -4,7 +4,7 @@ import java.io.* ;
 public class TOPPUPIL 
 {
     // array of PUPIL objects 
-    private pupil pupilList [] ;
+    private PUPIL pupilList [] ;
     //number of members to be calculated after reading file
     int noOfPUPILS ; 
     int topMark ; 
@@ -47,11 +47,11 @@ public class TOPPUPIL
         System.out.println ("** " + noOfPUPILS +  " rows read ." ) ;
 
         // prepare array for pupils 
-        pupilList = new pupil[noOfPUPILS] ;
+        pupilList = new PUPIL[noOfPUPILS] ;
 
         //create pupil objects and copy data from source
         for (int i = 0 ; i < noOfPUPILS ; i++) {
-            pupilList[i] = new pupil () ;
+            pupilList[i] = new PUPIL () ;
 
             //adjust to skip headings 
             pupilList[i].readPupilDetails(datarows[ i +1]);
